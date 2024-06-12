@@ -20,11 +20,9 @@ Product Store Service with UI
 """
 from flask import jsonify, request, abort
 from flask import url_for  # noqa: F401 pylint: disable=unused-import
-from service.models import Product
-from service.common import status  # HTTP Status Codes
 from service.models import Product, Category
+from service.common import status  # HTTP Status Codes
 from . import app
-
 
 
 ######################################################################
@@ -100,7 +98,7 @@ def create_products():
 # L I S T   A L L   P R O D U C T S
 ######################################################################
 @app.route("/products", methods=["GET"])
-def list_products():
+def list_all_products():
     """Returns a list of Products"""
     app.logger.info("Request to list Products...")
 
@@ -113,6 +111,8 @@ def list_products():
 ######################################################################
 # LIST PRODUCTS
 ######################################################################
+
+
 @app.route("/products", methods=["GET"])
 def list_products():
     """Returns a list of Products"""
@@ -135,6 +135,8 @@ def list_products():
 ######################################################################
 # READ A PRODUCT
 ######################################################################
+
+
 @app.route("/products/<int:product_id>", methods=["GET"])
 def get_products(product_id):
     """
@@ -154,6 +156,8 @@ def get_products(product_id):
 ######################################################################
 # U P D A T E   A   P R O D U C T
 ######################################################################
+
+
 @app.route("/products/<int:product_id>", methods=["PUT"])
 def update_products(product_id):
     """
@@ -176,6 +180,8 @@ def update_products(product_id):
 ######################################################################
 # DELETE A PRODUCT
 ######################################################################
+
+
 @app.route("/products/<int:product_id>", methods=["DELETE"])
 def delete_products(product_id):
     """
@@ -194,8 +200,10 @@ def delete_products(product_id):
 ######################################################################
 # LIST PRODUCTS BY CATEGORY
 ######################################################################
+
+
 @app.route("/products", methods=["GET"])
-def list_products():
+def list_products_by_category():
     """Returns a list of Products"""
     app.logger.info("Request to list Products...")
 
@@ -220,10 +228,12 @@ def list_products():
     return results, status.HTTP_200_OK
 
 ######################################################################
-# LIST PRODUCTS BY AVAILABILITY 
+# LIST PRODUCTS BY AVAILABILITY
 ######################################################################
+
+
 @app.route("/products", methods=["GET"])
-def list_products():
+def list_products_by_availability():
     """Returns a list of Products"""
     app.logger.info("Request to list Products...")
 
